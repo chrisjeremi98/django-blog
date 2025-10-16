@@ -36,13 +36,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic', #untuk staticfile
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig', #blog apps
-    'accounts.apps.AccountsConfig' # accounts apps
+    'accounts.apps.AccountsConfig', # accounts apps
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # utk staticfile
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -119,6 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR/"static"] # static file project
+STATIC_ROOT = BASE_DIR / "staticfiles" # utk deployment
+# STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STATICFILES_STORAGE =  "whitenoise.storage.CompressedManifestStaticFilesStorage" # staticfile whitenoise
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -127,3 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "home" #login redirect
 LOGOUT_REDIRECT_URL = "home" #logout redirecet
+
