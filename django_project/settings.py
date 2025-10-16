@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig' #blog apps
+    'blog.apps.BlogConfig', #blog apps
+    'accounts.apps.AccountsConfig' # accounts apps
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,4 @@ STATICFILES_DIRS = [BASE_DIR/"static"] # static file project
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "home" #login redirect
+LOGOUT_REDIRECT_URL = "home" #logout redirecet
